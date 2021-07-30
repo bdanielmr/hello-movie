@@ -1,0 +1,17 @@
+.splash-background {
+  width: 100%;
+  height: 100vh;
+  background: rgba(3, 37, 65, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash-text-h2 {
+  color: white;
+}
+.splash-text-h3 {
+  color: white;
+  font-size: 16px;
+}
