@@ -43,6 +43,11 @@ const storeReducer = (state, action) => {
         ...state,
         infoMovie: action.payload,
       };
+    case types.getSearchMovies:
+      return {
+        ...state,
+        listMovies: action.payload,
+      };
     default:
       return state;
   }

@@ -103,23 +103,27 @@ const CustomTopList = memo((props) => {
   ];
   return (
     <div className={style.cards}>
-      {loading
-        ? 'loading'
-        : listMovies.map((pel, i) => {
-            return (
-              <CustomCardMovie
-                key={i}
-                id={pel?.id}
-                title={
-                  pel?.original_title ? pel?.original_title : pel?.original_name
-                }
-                description={pel?.overview}
-                languaje={pel?.original_language}
-                poster={pel?.poster_path}
-                rating={pel?.vote_average}
-              />
-            );
-          })}
+      {loading ? (
+        'loading'
+      ) : typeof listMovies === 'undefined' ? (
+        <p>nada</p>
+      ) : (
+        listMovies?.map((pel, i) => {
+          return (
+            <CustomCardMovie
+              key={i}
+              id={pel?.id}
+              title={
+                pel?.original_title ? pel?.original_title : pel?.original_name
+              }
+              description={pel?.overview}
+              languaje={pel?.original_language}
+              poster={pel?.poster_path}
+              rating={pel?.vote_average}
+            />
+          );
+        })
+      )}
     </div>
   );
 });

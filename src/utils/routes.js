@@ -13,3 +13,10 @@ export const apiGetMoviesPage = (data) =>
 
 export const apiGetInfoMovie = (data) =>
   getApiZone(`3/movie/${data.id}?api_key=${API_KEY}`, TYPE_FETCHING.get, data);
+
+export const apiSearchMovie = (data) =>
+  getApiZone(
+    `3/search/movie?query=${data.find}&api_key=${API_KEY}`,
+    TYPE_FETCHING.get,
+    data
+  );

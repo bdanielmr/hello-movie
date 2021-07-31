@@ -46,8 +46,7 @@
   position: absolute;
   display: block;
   width: 60%;
-  height: 350px;
-  margin: 100px auto;
+  height: 450px;
   overflow: hidden;
   border-radius: 10px;
   transition: all 0.4s;
@@ -186,7 +185,7 @@
   }
 
   .info_section {
-    background: linear-gradient(to top, rgb(20, 20, 19) 50%, transparent 100%);
+    background: linear-gradient(to top, #032541 50%, transparent 100%);
     display: inline-grid;
   }
 }
