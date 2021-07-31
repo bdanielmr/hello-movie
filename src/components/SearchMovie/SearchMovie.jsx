@@ -22,9 +22,11 @@ const SearchMovie = (props) => {
   const handleInputValue = (e) => {
     console.log(e.target.value);
     setInputValue(e?.target?.value);
-    apiSearchMovie({
-      find: e?.target?.value?.length === 0 ? '' : e?.target?.value,
-    }).then((res) => searchListMovies(res));
+    if (e?.target?.value?.length !== 0) {
+      apiSearchMovie({
+        find: e?.target?.value,
+      }).then((res) => searchListMovies(res));
+    }
   };
   return (
     <div className={style['search-movie-input']}>
