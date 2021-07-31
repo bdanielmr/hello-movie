@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import HomeSearchMovie from '../views/HomeSearchMovie/HomeSearchMovie';
-import InfoPageSearchMovie from '../views/InfoPageSearchMovie/InfoPageSearchMovie';
 import Error404 from '../views/Error404/Error404';
 import SplashStartSearch from '../components/SplashStartSearch/SplashStartSearch';
+import InfoPageSearchMovie from '../views/InfoPageSearchMovie/InfoPageSearchMovie';
 export default [
   {
     name: 'SplashStartSearch',

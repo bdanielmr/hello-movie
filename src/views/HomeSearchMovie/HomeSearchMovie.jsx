@@ -1,37 +1,18 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import SearchMovie from '../../components/SearchMovie/SearchMovie';
 import CustomTopList from '../../components/CustomTopList/CustomTopList';
 import style from './homeSearchMovie.module.scss';
-import logo from '../../img/hellomovielogo.svg';
+import CustomPagination from '../../components/CustomPagination/CustomPagination';
+import { StoreContext } from '../../store/StoreProvider';
+import { types } from '../../store/storeReducer';
 const HomeSearchMovie = (props) => {
+  const [store, dispatch] = useContext(StoreContext);
+  const { paginationList } = store;
+  console.log('PAGONATION', paginationList);
   return (
     <>
-      <header
-        style={{
-          position: 'fixed',
-          top: 0,
-          bottom: 0,
-          display: 'flex',
-          width: '100%',
-          height: '55px',
-          background: 'rgba(3, 37, 65, 1)',
-          zIndex: '99999',
-        }}
-      >
-        <div
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <div style={{ display: 'flex', width: '60%' }}>
-            <img width="180px" src={logo} />
-          </div>
-        </div>
-      </header>
       <div
         style={{
           display: 'flex',
@@ -77,6 +58,22 @@ const HomeSearchMovie = (props) => {
             }}
           >
             <CustomTopList />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              height: '80px',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '20px',
+            }}
+          >
+            {!!paginationList && (
+              <CustomPagination
+                star={paginationList?.page}
+                end={paginationList?.total_pages}
+              />
+            )}
           </div>
         </div>
       </div>
