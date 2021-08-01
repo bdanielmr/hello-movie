@@ -1,16 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { StoreContext } from '../../store/StoreProvider';
 import { types } from '../../store/storeReducer';
 import { apiSearchMovie } from '../../utils/routes';
 import style from './searchMovie.module.scss';
+import CustomLoading from '../CustomLoading/CustomLoading';
 const SearchMovie = (props) => {
   const [store, dispatch] = useContext(StoreContext);
   const { movie, listMovies, listMoviesError } = store;
 
   const [inputValue, setInputValue] = useState('');
-
+  const [loading, setLoading] = useState(false);
   const searchListMovies = (res) => {
     dispatch({
       type: types.getTrendingMoviesSuccess,
@@ -20,21 +21,30 @@ const SearchMovie = (props) => {
   };
 
   const handleInputValue = (e) => {
+    setLoading(true);
     setInputValue(e?.target?.value);
     if (e?.target?.value?.length !== 0) {
       apiSearchMovie({
         find: e?.target?.value,
-      }).then((res) => searchListMovies(res));
+      }).then((res) => {
+        setLoading(false);
+        return searchListMovies(res);
+      });
+    } else {
+      setLoading(false);
     }
   };
   return (
-    <div className={style['search-movie-input']}>
-      <input
-        value={inputValue}
-        onChange={handleInputValue}
-        placeholder="Buscar una pelicula"
-      />
-    </div>
+    <>
+      {loading && <CustomLoading />}
+      <div className={style['search-movie-input']}>
+        <input
+          value={inputValue}
+          onChange={handleInputValue}
+          placeholder="Buscar una pelicula"
+        />
+      </div>
+    </>
   );
 };
 

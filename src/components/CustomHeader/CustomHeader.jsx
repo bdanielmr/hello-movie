@@ -25,7 +25,7 @@ const CustomHeader = (props) => {
         }}
       >
         <div style={{ display: 'flex', width: '60%' }}>
-          <Link style={{ display: 'flex', margin: 0, padding: 0 }} to="/home">
+          <Link style={{ display: 'flex', margin: 0, padding: 0 }} to="/">
             <img width="180px" src={logo} />
           </Link>
         </div>
