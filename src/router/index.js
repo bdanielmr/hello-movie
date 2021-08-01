@@ -9,11 +9,12 @@ import {
 } from 'react-router-dom';
 import routes from './routes.js';
 import InfoPageSearchMovie from '../views/InfoPageSearchMovie/InfoPageSearchMovie';
-// Quitado el modo estricto debido al codigo antiguo
+import CustomHeader from '../components/CustomHeader/CustomHeader.jsx';
 // eslint-disable-next-line react/prop-types
 export default function ViewsRouter(props) {
   return (
     <Router>
+      <CustomHeader />
       <Views />
     </Router>
   );

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './customButtom.module.scss';
 const CustomButtom = ({ history, label }) => {
-  console.log('histor', history);
   const onclickButtom = () => {
     history.push({
       pathname: '/home',

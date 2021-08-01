@@ -20,7 +20,6 @@ const SearchMovie = (props) => {
   };
 
   const handleInputValue = (e) => {
-    console.log(e.target.value);
     setInputValue(e?.target?.value);
     if (e?.target?.value?.length !== 0) {
       apiSearchMovie({

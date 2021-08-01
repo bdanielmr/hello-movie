@@ -6,68 +6,21 @@ import CustomTopList from '../../components/CustomTopList/CustomTopList';
 import style from './homeSearchMovie.module.scss';
 import CustomPagination from '../../components/CustomPagination/CustomPagination';
 import { StoreContext } from '../../store/StoreProvider';
-import { types } from '../../store/storeReducer';
 const HomeSearchMovie = (props) => {
-  const [store, dispatch] = useContext(StoreContext);
+  const [store] = useContext(StoreContext);
   const { paginationList } = store;
-  console.log('PAGONATION', paginationList);
+
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-          height: '100%',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-evenly',
-            width: '80%',
-            height: '100%',
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              height: '75px',
-              position: 'fixed',
-              top: 55,
-              bottom: 0,
-              zIndex: '9999',
-              marginTop: '0px',
-              marginBottom: '10px',
-              background: 'white',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
+      <div className={style['home-search-movie']}>
+        <div className={style['home-search-movie-body']}>
+          <div className={style['home-search-movie-body-search-component']}>
             <SearchMovie />
           </div>
-          <div
-            style={{
-              width: '70%',
-              marginTop: '150px',
-            }}
-          >
+          <div className={style['home-search-movie-body-list-component']}>
             <CustomTopList />
           </div>
-          <div
-            style={{
-              display: 'flex',
-              height: '80px',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '20px',
-            }}
-          >
+          <div className={style['home-search-movie-body-pagination-component']}>
             {!!paginationList && (
               <CustomPagination
                 star={paginationList?.page}
@@ -77,17 +30,8 @@ const HomeSearchMovie = (props) => {
           </div>
         </div>
       </div>
-      <footer
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          height: '30px',
-          width: '100%',
-          background: 'rgba(3, 37, 65, 1)',
-          zIndex: '9999',
-        }}
-      >
-        hola
+      <footer className={style['home-search-movie-footer']}>
+        @bdanielmr - themoviedb.
       </footer>
     </>
   );

@@ -3,17 +3,13 @@ const types = {
   getTrendingMoviesSuccess: 'get - trending - movies - success',
   getTrendingMoviesError: 'get - trending - movies - error',
   getSearchMovies: 'get - search - movies',
-  getMovie: 'get - movie',
   getPaginaMovie: 'get - pagina - movie',
   getInfoMovie: 'get - info - movie',
 };
 
 const initialStore = {
-  movie: { id: 0, title: 'blond' },
-  listMovies: [
-    { id: 1, title: 'Movie 1' },
-    { id: 2, title: 'Movie ' },
-  ],
+  movie: {},
+  listMovies: [],
   listMoviesLoading: false,
   listMoviesError: [],
   paginationList: null,
