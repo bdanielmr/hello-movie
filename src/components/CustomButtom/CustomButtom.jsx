@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './customButtom.module.scss';
-const CustomButtom = ({ history, label }) => {
+import { useHistory } from 'react-router-dom';
+const CustomButtom = ({ label }) => {
+  const history = useHistory();
   const onclickButtom = () => {
     history.push({
       pathname: '/home',
@@ -9,7 +11,9 @@ const CustomButtom = ({ history, label }) => {
   };
   return (
     <div className={style['custom-buttom']}>
-      <button onClick={onclickButtom}>{label}</button>
+      <button data-testid="button" onClick={onclickButtom}>
+        {label}
+      </button>
     </div>
   );
 };

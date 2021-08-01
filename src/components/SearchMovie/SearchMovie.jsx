@@ -39,6 +39,7 @@ const SearchMovie = (props) => {
       {loading && <CustomLoading />}
       <div className={style['search-movie-input']}>
         <input
+          data-testid="search-movie"
           value={inputValue}
           onChange={handleInputValue}
           placeholder="Buscar una pelicula"
