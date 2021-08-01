@@ -10,6 +10,11 @@ In the project directory, you can run:
 
 En el directorio del proyecto, puede ejecutar:
 
+### `npm install`
+
+install depences
+instala las dependencias
+
 ### `npm start`
 
 Runs the app in the development mode.\
