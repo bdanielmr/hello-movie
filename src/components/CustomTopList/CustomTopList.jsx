@@ -37,10 +37,6 @@ const CustomTopList = memo((props) => {
       getErrorMovies();
     }
   }, [getList]);
-  console.log('ver list', getList);
-  console.log('ver listMovies', listMovies);
-  console.log('ver listMovies error', listMoviesError);
-
   return (
     <div className={style.cards}>
       {typeof listMovies === 'undefined' && (

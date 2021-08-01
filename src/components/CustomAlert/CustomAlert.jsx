@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import errorMan from '../../img/1.6.png';
 import errorCat from '../../img/no_search_results.png';
 const CustomAlert = ({ error }) => {
-  console.log('ver alert error', error);
   return (
     <div>
       <h1>Oops!</h1>

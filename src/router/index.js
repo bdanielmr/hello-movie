@@ -25,7 +25,6 @@ function Views({ dataId, cToken, aToken, stylePa }) {
   // eslint-disable-next-line prefer-const
   let location = useLocation();
   const background = location.state && location.state.background;
-  console.log('BACKGROU', location);
   return (
     <>
       <Switch location={background || location}>

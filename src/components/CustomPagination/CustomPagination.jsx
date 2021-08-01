@@ -16,7 +16,7 @@ const CustomPagination = memo(({ start, end }) => {
   const [arrowRigth, setArrowRigth] = useState(10);
   const [colorFocus, setColorFocus] = useState('index0');
   const [putLoading, setPutLoading] = useState(false);
-  console.log('ver PUT LOADING', putLoading);
+
   const handleMorePage = () => {
     if (arrowRigth < end) {
       setArrowLeft(arrowLeft + 1);
@@ -43,7 +43,6 @@ const CustomPagination = memo(({ start, end }) => {
       page: e.target.value,
     }).then((res) => {
       setPutLoading(false);
-      console.log('cer rRESPONSE', res);
       return updateListMovies(res);
     });
   };
