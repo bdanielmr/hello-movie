@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.66a3ec41.chunk.css",
+    "main.js": "/static/js/main.0d7c24fd.chunk.js",
+    "main.js.map": "/static/js/main.0d7c24fd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6231859d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6231859d.js.map",
+    "static/js/2.eeeb9431.chunk.js": "/static/js/2.eeeb9431.chunk.js",
+    "static/js/2.eeeb9431.chunk.js.map": "/static/js/2.eeeb9431.chunk.js.map",
+    "static/js/3.c00402d3.chunk.js": "/static/js/3.c00402d3.chunk.js",
+    "static/js/3.c00402d3.chunk.js.map": "/static/js/3.c00402d3.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.66a3ec41.chunk.css.map": "/static/css/main.66a3ec41.chunk.css.map",
+    "static/js/2.eeeb9431.chunk.js.LICENSE.txt": "/static/js/2.eeeb9431.chunk.js.LICENSE.txt",
+    "static/media/1.6.513e0967.png": "/static/media/1.6.513e0967.png",
+    "static/media/hellomovielogo.bf7f470b.svg": "/static/media/hellomovielogo.bf7f470b.svg",
+    "static/media/no_search_results.f672f6a6.png": "/static/media/no_search_results.f672f6a6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6231859d.js",
+    "static/js/2.eeeb9431.chunk.js",
+    "static/css/main.66a3ec41.chunk.css",
+    "static/js/main.0d7c24fd.chunk.js"
+  ]
+}
