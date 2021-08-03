@@ -10,23 +10,30 @@ import styles from './customPagination.module.scss';
 import CustomLoading from '../CustomLoading/CustomLoading';
 const CustomPagination = memo(({ start, end }) => {
   const [store, dispatch] = useContext(StoreContext);
-  const { movie, listMovies, listMoviesError } = store;
+  const { movie, listMovies, listMoviesError, paginationList } = store;
 
   const [arrowLeft, setArrowLeft] = useState(0);
   const [arrowRigth, setArrowRigth] = useState(10);
   const [colorFocus, setColorFocus] = useState('index0');
   const [putLoading, setPutLoading] = useState(false);
-
+  const [putResPage, setPutResPage] = useState(paginationList?.page);
   const handleMorePage = () => {
-    if (arrowRigth < end) {
-      setArrowLeft(arrowLeft + 1);
-      setArrowRigth(arrowRigth + 1);
+    if (putResPage < end) {
+      setPutResPage(putResPage + 1);
+      setPutLoading(true);
+
+      handleFocus({ target: { value: putResPage + 1 } }, `index${putResPage}`);
     }
   };
   const handleMinusPage = () => {
-    if (arrowLeft > 0) {
-      setArrowLeft(arrowLeft - 1);
-      setArrowRigth(arrowRigth - 1);
+    if (putResPage > 1) {
+      setPutResPage(putResPage - 1);
+      setPutLoading(true);
+
+      handleFocus(
+        { target: { value: putResPage - 1 } },
+        `index${putResPage - 2}`
+      );
     }
   };
   const updateListMovies = (res) => {
@@ -43,6 +50,7 @@ const CustomPagination = memo(({ start, end }) => {
       page: e.target.value,
     }).then((res) => {
       setPutLoading(false);
+      setPutResPage(res?.page);
       return updateListMovies(res);
     });
   };
