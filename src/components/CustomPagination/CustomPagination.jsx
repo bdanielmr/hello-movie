@@ -99,7 +99,7 @@ const CustomPagination = memo(({ start, end }) => {
                   style={{
                     textAlign: 'center',
                     color: 'black',
-                    border: colorFocus === ID ? '' : '1px solid black',
+                    border: colorFocus === ID ? '1px solid black' : '',
                     width: colorFocus === ID ? '30px' : '30px',
                     height: colorFocus === ID ? '30px' : '30px',
                     background:
