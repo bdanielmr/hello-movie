@@ -23,7 +23,6 @@ const CustomPagination = memo(({ start, end, pagina = 'index1' }) => {
     if (putResPage < end) {
       setPutResPage(putResPage + 1);
       setPutLoading(true);
-      console.log(' focus more', paginationList);
       handleFocus(
         { target: { value: putResPage + 1 } },
         `index${putResPage + 1}`
@@ -67,7 +66,6 @@ const CustomPagination = memo(({ start, end, pagina = 'index1' }) => {
     });
   };
   const handleBlur = (e, id) => {};
-  console.log('ver index', putResPage);
   useEffect(() => {
     setColorFocus('index1');
     setPutResPage(1);
