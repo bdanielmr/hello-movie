@@ -75,65 +75,69 @@ const CustomPagination = memo(({ start, end, pagina = 'index1' }) => {
   return (
     <>
       {putLoading && <CustomLoading />}
-      <div
-        className={styles['custom-pagination-arrow-body']}
-        onClick={handleMinusPage}
-      >
-        <a className={styles['custom-pagination-arrow']}>{'<'}</a>
-      </div>
-      <div className={styles['custom-pagination-body']}>
-        {Array.from(Array(end).keys())
-          .slice(
-            putResPage <= 10 ? 1 : putResPage - 9,
-            putResPage < 10 ? 11 : putResPage + 1
-          )
-          .map((pagination, i) => {
-            const ID = 'index' + pagination;
-            return (
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '30px',
-                  height: '30px',
-                  margin: '0px 10px',
-                }}
-                key={i}
-              >
-                <input
-                  type="text"
-                  readOnly
-                  ref={descRef}
-                  key={ID}
-                  style={{
-                    textAlign: 'center',
-                    color: 'black',
-                    border: colorFocus === ID ? '1px solid black' : '',
-                    width: colorFocus === ID ? '30px' : '30px',
-                    height: colorFocus === ID ? '30px' : '30px',
-                    background:
-                      colorFocus === ID
-                        ? 'linear-gradient(to right, #1ed5a9 0%, #01b4e4 100%)'
-                        : '',
-                    borderRadius: colorFocus === ID ? '50%' : '',
-                    cursor: 'pointer',
-                  }}
-                  onChange={() => console.log('onChange')}
-                  onFocus={(e) => handleFocus(e, ID)}
-                  onBlur={(e) => handleBlur(e, ID)}
-                  value={pagination}
-                />
-              </div>
-            );
-          })}
-      </div>
-      <div
-        className={styles['custom-pagination-arrow-body']}
-        onClick={handleMorePage}
-      >
-        <a className={styles['custom-pagination-arrow']}>{'>'}</a>
-      </div>
+      {end > 1 && (
+        <>
+          <div
+            className={styles['custom-pagination-arrow-body']}
+            onClick={handleMinusPage}
+          >
+            <a className={styles['custom-pagination-arrow']}>{'<'}</a>
+          </div>
+          <div className={styles['custom-pagination-body']}>
+            {Array.from(Array(end + 1).keys())
+              .slice(
+                putResPage <= 10 ? 1 : putResPage - 9,
+                putResPage < 10 ? 11 : putResPage + 1
+              )
+              .map((pagination, i) => {
+                const ID = 'index' + pagination;
+                return (
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      width: '30px',
+                      height: '30px',
+                      margin: '0px 10px',
+                    }}
+                    key={i}
+                  >
+                    <input
+                      type="text"
+                      readOnly
+                      ref={descRef}
+                      key={ID}
+                      style={{
+                        textAlign: 'center',
+                        color: 'black',
+                        border: colorFocus === ID ? '1px solid black' : '',
+                        width: colorFocus === ID ? '30px' : '30px',
+                        height: colorFocus === ID ? '30px' : '30px',
+                        background:
+                          colorFocus === ID
+                            ? 'linear-gradient(to right, #1ed5a9 0%, #01b4e4 100%)'
+                            : '',
+                        borderRadius: colorFocus === ID ? '50%' : '',
+                        cursor: 'pointer',
+                      }}
+                      onChange={() => console.log('onChange')}
+                      onFocus={(e) => handleFocus(e, ID)}
+                      onBlur={(e) => handleBlur(e, ID)}
+                      value={pagination}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+          <div
+            className={styles['custom-pagination-arrow-body']}
+            onClick={handleMorePage}
+          >
+            <a className={styles['custom-pagination-arrow']}>{'>'}</a>
+          </div>
+        </>
+      )}
     </>
   );
 });
