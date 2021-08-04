@@ -11,7 +11,6 @@ const HomeSearchMovie = (props) => {
   const [store] = useContext(StoreContext);
   const { listMovies, paginationList } = store;
   const history = useHistory();
-  console.log('ver pagination los', paginationList);
   useEffect(() => {
     const params = new URLSearchParams();
     if (
