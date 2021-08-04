@@ -8,15 +8,15 @@ import style from './searchMovie.module.scss';
 import CustomLoading from '../CustomLoading/CustomLoading';
 const SearchMovie = (props) => {
   const [store, dispatch] = useContext(StoreContext);
-  const { movie, listMovies, listMoviesError } = store;
-
+  const { movie, listMovies, listMoviesError, paginationList } = store;
+  console.log('paginationList', paginationList?.page);
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
-  const searchListMovies = (res) => {
+  const searchListMovies = (res, find) => {
     dispatch({
       type: types.getTrendingMoviesSuccess,
       payload: res.results,
-      allPayload: res,
+      allPayload: { ...res, component: 'search', find: find },
     });
   };
 
@@ -26,9 +26,10 @@ const SearchMovie = (props) => {
     if (e?.target?.value?.length !== 0) {
       apiSearchMovie({
         find: e?.target?.value,
+        component: 'search',
       }).then((res) => {
         setLoading(false);
-        return searchListMovies(res);
+        return searchListMovies(res, e?.target?.value);
       });
     } else {
       setLoading(false);

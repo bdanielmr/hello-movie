@@ -1,21 +1,21 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/display-name */
 /* eslint-disable no-unused-vars */
-import React, { memo, useContext, useState, useRef } from 'react';
+import React, { memo, useContext, useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StoreContext } from '../../store/StoreProvider';
 import { types } from '../../store/storeReducer';
 import { apiGetMoviesPage } from '../../utils/routes';
 import styles from './customPagination.module.scss';
 import CustomLoading from '../CustomLoading/CustomLoading';
-const CustomPagination = memo(({ start, end }) => {
+const CustomPagination = memo(({ start, end, pagina = 'index1' }) => {
   const descRef = useRef();
   const [store, dispatch] = useContext(StoreContext);
   const { movie, listMovies, listMoviesError, paginationList } = store;
 
   const [arrowLeft, setArrowLeft] = useState(0);
   const [arrowRigth, setArrowRigth] = useState(10);
-  const [colorFocus, setColorFocus] = useState('index1');
+  const [colorFocus, setColorFocus] = useState(pagina);
   const [putLoading, setPutLoading] = useState(false);
   const [putResPage, setPutResPage] = useState(paginationList?.page);
 
@@ -23,7 +23,7 @@ const CustomPagination = memo(({ start, end }) => {
     if (putResPage < end) {
       setPutResPage(putResPage + 1);
       setPutLoading(true);
-
+      console.log(' focus more', paginationList);
       handleFocus(
         { target: { value: putResPage + 1 } },
         `index${putResPage + 1}`
@@ -41,11 +41,11 @@ const CustomPagination = memo(({ start, end }) => {
       );
     }
   };
-  const updateListMovies = (res) => {
+  const updateListMovies = (res, component, find) => {
     dispatch({
       type: types.getTrendingMoviesSuccess,
       payload: res.results,
-      allPayload: res,
+      allPayload: { ...res, component, find },
     });
   };
   const handleFocus = (e, id) => {
@@ -54,14 +54,24 @@ const CustomPagination = memo(({ start, end }) => {
     setColorFocus(id);
     apiGetMoviesPage({
       page: e.target.value,
+      component: paginationList?.component ? 'search' : '',
+      find: paginationList?.find ? paginationList?.find : '',
     }).then((res) => {
       setPutLoading(false);
       setPutResPage(res?.page);
-      return updateListMovies(res);
+      return updateListMovies(
+        res,
+        paginationList?.component ? 'search' : '',
+        paginationList?.find ? paginationList?.find : ''
+      );
     });
   };
   const handleBlur = (e, id) => {};
   console.log('ver index', putResPage);
+  useEffect(() => {
+    setColorFocus('index1');
+    setPutResPage(1);
+  }, [end]);
   return (
     <>
       {putLoading && <CustomLoading />}
@@ -131,6 +141,7 @@ const CustomPagination = memo(({ start, end }) => {
 CustomPagination.propTypes = {
   start: PropTypes.number,
   end: PropTypes.number,
+  pagina: PropTypes.string,
 };
 
 export default CustomPagination;

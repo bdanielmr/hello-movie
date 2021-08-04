@@ -8,8 +8,8 @@ import CustomPagination from '../../components/CustomPagination/CustomPagination
 import { StoreContext } from '../../store/StoreProvider';
 const HomeSearchMovie = (props) => {
   const [store] = useContext(StoreContext);
-  const { paginationList } = store;
-
+  const { listMovies, paginationList } = store;
+  console.log('ver list movies', paginationList);
   return (
     <>
       <div className={style['home-search-movie']}>
